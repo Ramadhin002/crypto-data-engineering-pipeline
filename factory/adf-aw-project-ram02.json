@@ -1,0 +1,15 @@
+{
+	"name": "adf-aw-project-ram02",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0e37a7b0-b436-4327-96d3-6561fc4544b6",
+		"tenantId": "1345b6df-df76-4d2b-93ac-97ab1b24bc38"
+	}
+}
