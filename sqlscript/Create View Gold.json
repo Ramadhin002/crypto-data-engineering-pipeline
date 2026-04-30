@@ -1,0 +1,17 @@
+{
+	"name": "Create View Gold",
+	"properties": {
+		"content": {
+			"query": "CREATE VIEW gold.gbp\nAS \nSELECT * FROM\nOPENROWSET(\n    BULK 'https://awstoragedatalakeram.blob.core.windows.net/silver/GBP/',\n    FORMAT='PARQUET'\n)\nAS quer1",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "adbdatabasedb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

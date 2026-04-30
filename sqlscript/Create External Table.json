@@ -1,0 +1,17 @@
+{
+	"name": "Create External Table",
+	"properties": {
+		"content": {
+			"query": "CREATE DATABASE SCOPED CREDENTIAL cred_ram\nWITH IDENTITY = 'Managed Identity';\n\n\nCREATE EXTERNAL DATA SOURCE source_silver\nWITH\n(\n    LOCATION='https://awstoragedatalakeram.blob.core.windows.net/silver',\n    CREDENTIAL=cred_ram\n)\n\n\nCREATE EXTERNAL DATA SOURCE source_gold\nWITH\n(\n    LOCATION='https://awstoragedatalakeram.blob.core.windows.net/gold',\n    CREDENTIAL=cred_ram\n)\n\n\nCREATE EXTERNAL FILE FORMAT format_parquet\nWITH\n(\n    FORMAT_TYPE=PARQUET,\n    DATA_COMPRESSION='org.apache.hadoop.io.compress.SnappyCodec'\n)\nCREATE EXTERNAL TABLE gold.externalinr\nWITH\n(\n    LOCATION='externaleur',\n    DATA_SOURCE=source_gold,\n    FILE_FORMAT=format_parquet\n)\nAS\nSELECT id, symbol,name,current_price,market_cap,total_volume FROM gold.inr\n\nSELECT * from gold.inr\n\n\n\n\n\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "adbdatabasedb",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
